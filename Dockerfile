@@ -44,7 +44,7 @@ RUN git clone https://github.com/rizinorg/rizin
 WORKDIR /root/rizin
 RUN meson setup build
 RUN meson compile -C build
-# $ sudo meson install -C build
+RUN meson install -C build
 
 # install one_gadget command
 RUN gem install one_gadget
