@@ -26,6 +26,9 @@ RUN ./setup.sh
 RUN pip3 install --upgrade pip
 RUN pip3 install pwntools
 
+# install angr
+RUN pip3 install angr
+
 # install one_gadget command
 RUN gem install one_gadget
 
