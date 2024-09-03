@@ -22,16 +22,17 @@ RUN apt install -y \
     ninja-build \
     wget
 
+# install pwntools
+RUN pip3 install --upgrade pip
+RUN pip3 install poetry 
+RUN pip3 install pwntools
+
 # install pwndbg
 WORKDIR /root
 RUN git clone https://github.com/pwndbg/pwndbg
 WORKDIR /root/pwndbg
 #RUN git checkout 2023.03.19
 RUN ./setup.sh
-
-# install pwntools
-RUN pip3 install --upgrade pip
-RUN pip3 install pwntools
 
 # install angr
 RUN pip3 install angr
