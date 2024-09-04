@@ -46,12 +46,16 @@ RUN meson setup build
 RUN meson compile -C build
 RUN meson install -C build
 RUN ldconfig
-
-WORKDIR /root
+## install rz-pipe
 RUN git clone https://github.com/rizinorg/rz-pipe
 RUN pip3 install ./rz-pipe/python
 
+## install rz-pm & rz-ghidra
+RUN wget https://github.com/rizinorg/rz-pm/releases/download/v0.3.3/rz-pm-linux-x86_64
+RUN chmod +x rz-pm-linux-x86_64
+RUN ./rz-pm-linux-x86_64 --debug install rz-ghidra
+
 # install one_gadget command
+WORKDIR /root
 RUN gem install one_gadget
 
-WORKDIR /root
