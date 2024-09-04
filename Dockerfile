@@ -45,6 +45,11 @@ WORKDIR /root/rizin
 RUN meson setup build
 RUN meson compile -C build
 RUN meson install -C build
+RUN ldconfig
+
+WORKDIR /root
+RUN git clone https://github.com/rizinorg/rz-pipe
+RUN pip3 install ./rz-pipe/python
 
 # install one_gadget command
 RUN gem install one_gadget
